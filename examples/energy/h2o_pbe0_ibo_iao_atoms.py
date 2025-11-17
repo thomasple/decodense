@@ -22,10 +22,12 @@ mol = gto.M(
 mf = scf.RKS(mol)
 mf.xc = "pbe0"
 mf.conv_tol = 1.0e-10
-mf.kernel()
+energy = mf.kernel()
 
 # occupied orbitals
 occ_mo = np.where(mf.mo_occ == 2.0)[0]
+
+print("total energy:",energy)
 
 # pipek-mezey procedure
 loc = lo.PM(mol, mf=mf)
@@ -44,3 +46,4 @@ decomp = decodense.DecompCls(pop_method="iao", part="atoms")
 res = decodense.main(mol, decomp, mf, mo_coeff)
 
 print(res)
+print(np.array(res["Total"]).sum())

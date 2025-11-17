@@ -1,0 +1,22 @@
+[project]
+name = "decodense"
+version = "0.1.0"
+description = "A Python package for decomposing hf and dft mean-field theory"
+readme = "README.md"
+authors = [
+    { name = "Dr. Janus Juul Eriksen", email = "janus.eriksen@bristol.ac.uk" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "opt-einsum>=3.4.0",
+    "pandas>=2.3.3",
+    "pyscf>=2.11.0",
+    "pyscf-dispersion>=1.3.0",
+]
+
+[project.scripts]
+decodense = "decodense:main"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
